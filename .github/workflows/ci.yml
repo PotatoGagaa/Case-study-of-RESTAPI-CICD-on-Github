@@ -17,6 +17,7 @@ jobs:
 
     env:
       PYTHONPATH: ${{ github.workspace }}
+      TEST_API_TOKEN: ${{ secrets.TEST_API_TOKEN }}
 
     steps:
       - name: Check out repository
