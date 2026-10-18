@@ -16,7 +16,8 @@ _next_id = 1
 
 # This is a demo-only token. Never use a real production token here.
 TEST_API_TOKEN = "demo-test-token"
-
+# Change to use an environment variable in production code.
+#TEST_API_TOKEN = os.environ["TEST_API_TOKEN"]
 
 class TaskCreate(BaseModel):
     title: str = Field(min_length=1, max_length=100)
