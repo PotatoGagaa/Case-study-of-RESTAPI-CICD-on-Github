@@ -1,0 +1,32 @@
+name: Deploy to Azure App Service
+
+on:
+  # Chained trigger: run this workflow automatically when the REST API CI (ci.yml) finishes successfully
+  workflow_run:
+    workflows: ["REST API CI"]
+    types: [completed]
+    branches: [main]
+  # Manual trigger: lets you re-run the deployment from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    # Deploy only when CI passed (and the triggering event was a push); manual dispatch is always allowed
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: github-cicd-case-study
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          package: .
+
+      - name: Smoke test /health
+        run: curl -fsS "https://github-cicd-case-study-d3ctbhcne7cec8c7.eastasia-01.azurewebsites.net/health"
