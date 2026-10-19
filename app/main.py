@@ -15,8 +15,9 @@ app = FastAPI(
 _tasks: dict[int, dict] = {}
 _next_id = 1
 
-# This is a demo-only token. Never use a real production token here.
-TEST_API_TOKEN = "sk_live_y7TztvasCsi9rMHTIIgcgwQQ"
+# Demo token comes from the environment - set it in Azure App Settings,
+# GitHub Secrets, or your local shell before starting the app.
+TEST_API_TOKEN = os.environ["TEST_API_TOKEN"]
 
 class TaskCreate(BaseModel):
     title: str = Field(min_length=1, max_length=100)
@@ -78,6 +79,6 @@ def delete_task(task_id: int) -> None:
     del _tasks[task_id]
 
 
-@app.get("/secret")
-def get_secret() -> dict[str, str]:
-    return {"secret": "The company secret is 42. Don't tell anyone!"}
+# @app.get("/secret")
+# def get_secret() -> dict[str, str]:
+#     return {"secret": "The company secret is 42. Don't tell anyone!"}
