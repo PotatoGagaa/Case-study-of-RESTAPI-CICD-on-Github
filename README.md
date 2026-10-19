@@ -46,7 +46,7 @@ uvicorn app.main:app --reload
 
 Open `http://127.0.0.1:8000/docs` to try the API.
 
-For protected endpoints, add header `X-API-Token: demo-test-token`.
+For protected endpoints, add header `X-API-Token: demo_tok_7f3a9c2e8b1d4f6a0c5e7b2d9a1f3c8e`.
 
 ## Configure GitHub Actions
 
