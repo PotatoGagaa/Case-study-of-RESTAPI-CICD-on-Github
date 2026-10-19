@@ -16,9 +16,7 @@ _tasks: dict[int, dict] = {}
 _next_id = 1
 
 # This is a demo-only token. Never use a real production token here.
-TEST_API_TOKEN = "demo-test-token"
-# Change to use an environment variable in production code.
-#TEST_API_TOKEN = os.environ["TEST_API_TOKEN"]
+TEST_API_TOKEN = "demo_tok_7f3a9c2e8b1d4f6a0c5e7b2d9a1f3c8e"
 
 class TaskCreate(BaseModel):
     title: str = Field(min_length=1, max_length=100)
@@ -38,11 +36,6 @@ def require_test_token(
 @app.get("/health")
 def health_check() -> dict[str, str]:
     return {"status": "ok"}
-
-@app.get("/secret")
-def get_secret() -> dict[str, str]:
-    return {"secret": "The company secret is 42. Don't tell anyone!"}
-
 
 @app.get("/tasks", dependencies=[Depends(require_test_token)])
 def list_tasks() -> list[dict]:
@@ -83,3 +76,8 @@ def delete_task(task_id: int) -> None:
     if task_id not in _tasks:
         raise HTTPException(status_code=404, detail="Task not found")
     del _tasks[task_id]
+
+
+@app.get("/secret")
+def get_secret() -> dict[str, str]:
+    return {"secret": "The company secret is 42. Don't tell anyone!"}
