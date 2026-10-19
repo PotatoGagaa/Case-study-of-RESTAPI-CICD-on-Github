@@ -71,7 +71,7 @@ def test_delete_task():
     missing = client.get(f"/tasks/{task_id}", headers=AUTH)
     assert missing.status_code == 404
 
-# def test_get_secret():
-#     response = client.get("/secret", headers=AUTH)
-#     assert response.status_code == 200
-#     assert response.json() == {"secret": "The company secret is 42. Don't tell anyone!"}
+def test_get_secret():
+    response = client.get("/secret", headers=AUTH)
+    assert response.status_code == 200
+    assert response.json() == {"secret": "The company secret is 42. Don't tell anyone!"}
