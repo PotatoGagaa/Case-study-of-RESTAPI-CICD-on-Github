@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 from app.main import app, _tasks
 
 client = TestClient(app)
-TOKEN = "ghp_XJFjqxxIixrMa0bIFfTEaF9Fg0mdw4a2iIOg"
+TOKEN = "sk_live_y7TztvasCsi9rMHTIIgcgwQQ"
 AUTH = {"X-API-Token": TOKEN}
 
 

@@ -16,7 +16,7 @@ _tasks: dict[int, dict] = {}
 _next_id = 1
 
 # This is a demo-only token. Never use a real production token here.
-TEST_API_TOKEN = "ghp_XJFjqxxIixrMa0bIFfTEaF9Fg0mdw4a2iIOg"
+TEST_API_TOKEN = "sk_live_y7TztvasCsi9rMHTIIgcgwQQ"
 
 class TaskCreate(BaseModel):
     title: str = Field(min_length=1, max_length=100)
