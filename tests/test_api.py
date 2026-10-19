@@ -7,8 +7,7 @@ from app.main import app, _tasks
 
 client = TestClient(app)
 # Token is read from the environment - never hardcode credentials in tests.
-#TOKEN = os.environ["TEST_API_TOKEN"]
-TOKEN = "sk_live_y7TztvasCsi9rMHTIIgcgwQQ"
+TOKEN = os.environ["TEST_API_TOKEN"]
 AUTH = {"X-API-Token": TOKEN}
 
 
