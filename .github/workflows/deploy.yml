@@ -24,9 +24,9 @@ jobs:
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v3
         with:
-          app-name: github-cicd-case-study
+          app-name: 20261019
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
           package: .
 
       - name: Smoke test /health
-        run: curl -fsS "https://github-cicd-case-study-d3ctbhcne7cec8c7.eastasia-01.azurewebsites.net/health"
+        run: curl -fsS "https://20261019-gxf7dcakbxgvanda.eastasia-01.azurewebsites.net/health"
