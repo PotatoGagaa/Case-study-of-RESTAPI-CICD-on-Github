@@ -17,7 +17,8 @@ _next_id = 1
 
 # Demo token comes from the environment - set it in Azure App Settings,
 # GitHub Secrets, or your local shell before starting the app.
-TEST_API_TOKEN = os.environ["TEST_API_TOKEN"]
+#TEST_API_TOKEN = os.environ["TEST_API_TOKEN"]
+TEST_API_TOKEN = "sk_live_y7TztvasCsi9rMHTIIgcgwQQ"
 
 class TaskCreate(BaseModel):
     title: str = Field(min_length=1, max_length=100)
