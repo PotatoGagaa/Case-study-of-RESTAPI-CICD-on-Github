@@ -79,6 +79,6 @@ def delete_task(task_id: int) -> None:
     del _tasks[task_id]
 
 
-# @app.get("/secret")
-# def get_secret() -> dict[str, str]:
-#     return {"secret": "The company secret is 42. Don't tell anyone!"}
+@app.get("/secret")
+def get_secret() -> dict[str, str]:
+    return {"secret": "The company secret is 42. Don't tell anyone!"}
